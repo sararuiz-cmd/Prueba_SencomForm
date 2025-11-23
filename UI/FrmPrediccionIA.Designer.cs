@@ -19,6 +19,7 @@ namespace Proyect_Sencom_Form.UI
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrediccionIA));
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.txtMesPrediccion = new System.Windows.Forms.TextBox();
             this.txtResultado = new System.Windows.Forms.TextBox();
@@ -35,7 +36,7 @@ namespace Proyect_Sencom_Form.UI
             this.txtNombreCliente.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNombreCliente.Location = new System.Drawing.Point(250, 80);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(220, 25);
+            this.txtNombreCliente.Size = new System.Drawing.Size(220, 30);
             this.txtNombreCliente.TabIndex = 0;
             // 
             // txtMesPrediccion
@@ -43,7 +44,7 @@ namespace Proyect_Sencom_Form.UI
             this.txtMesPrediccion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtMesPrediccion.Location = new System.Drawing.Point(250, 140);
             this.txtMesPrediccion.Name = "txtMesPrediccion";
-            this.txtMesPrediccion.Size = new System.Drawing.Size(220, 25);
+            this.txtMesPrediccion.Size = new System.Drawing.Size(220, 30);
             this.txtMesPrediccion.TabIndex = 1;
             // 
             // txtResultado
@@ -52,7 +53,7 @@ namespace Proyect_Sencom_Form.UI
             this.txtResultado.Location = new System.Drawing.Point(250, 295);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(220, 25);
+            this.txtResultado.Size = new System.Drawing.Size(220, 30);
             this.txtResultado.TabIndex = 2;
             // 
             // lblMensaje
@@ -128,10 +129,9 @@ namespace Proyect_Sencom_Form.UI
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.txtMesPrediccion);
             this.Controls.Add(this.txtNombreCliente);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrediccionIA";
             this.Text = "Módulo de Predicción con IA";
-
-
             this.ResumeLayout(false);
             this.PerformLayout();
 

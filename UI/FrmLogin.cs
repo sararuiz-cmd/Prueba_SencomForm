@@ -28,5 +28,10 @@ namespace Proyect_Sencom_Form.UI
         {
             MessageBox.Show("Registro simulado (puedes implementar Auth real después).");
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

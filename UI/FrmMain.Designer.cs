@@ -15,6 +15,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnVerGrafico = new System.Windows.Forms.Button();
             this.btnRegistrarFactura = new System.Windows.Forms.Button();
@@ -26,7 +27,7 @@
             // 
             // lblUsuario
             // 
-            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.Location = new System.Drawing.Point(30, 20);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(600, 30);
@@ -103,6 +104,7 @@
             this.Controls.Add(this.btnRegistrarFactura);
             this.Controls.Add(this.btnVerGrafico);
             this.Controls.Add(this.lblUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.Text = "Menú Principal";
             this.ResumeLayout(false);
