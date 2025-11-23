@@ -117,6 +117,11 @@ namespace Proyect_Sencom_Form.UI
                 lblMensaje.ForeColor = System.Drawing.Color.Maroon;
             }
         }
+
+        private void btnIniciarSesion_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
