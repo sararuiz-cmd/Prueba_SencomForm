@@ -8,7 +8,7 @@ namespace Proyect_Sencom_Form.UI
     {
         private readonly FacturaController _controller;
         private readonly string _usuario;
-        private Button btnToggleTheme;
+        private Button btnToggleTheme; // eliminado btnSalir
 
         public FrmMain(string usuario, FacturaController controller)
         {
@@ -16,8 +16,6 @@ namespace Proyect_Sencom_Form.UI
             _controller = controller ?? throw new ArgumentNullException(nameof(controller));
             _usuario = string.IsNullOrWhiteSpace(usuario) ? "(desconocido)" : usuario.Trim();
             lblUsuario.Text = "Usuario actual: " + _usuario;
-
-            // Cargar tema y aplicar
             ThemeManager.LoadTheme();
             AddThemeToggleButton();
             ThemeManager.ApplyTheme(this);
@@ -41,18 +39,20 @@ namespace Proyect_Sencom_Form.UI
             btnToggleTheme.BringToFront();
         }
 
+        private void AbrirUnico(Form frm)
+        {
+            ThemeManager.ApplyTheme(frm);
+            Program.FormContext.Navigate(frm);
+        }
+
         private void btnRegistrarFactura_Click(object sender, EventArgs e)
         {
-            FrmFactura frm = new FrmFactura(_controller);
-            ThemeManager.ApplyTheme(frm);
-            frm.ShowDialog();
+            AbrirUnico(new FrmFactura(_controller));
         }
 
         private void btnPrediccionIA_Click(object sender, EventArgs e)
         {
-            FrmPrediccionIA frm = new FrmPrediccionIA(_controller);
-            ThemeManager.ApplyTheme(frm);
-            frm.ShowDialog();
+            AbrirUnico(new FrmPrediccionIA(_controller));
         }
 
         private void btnExportarPdf_Click(object sender, EventArgs e)
@@ -80,6 +80,7 @@ namespace Proyect_Sencom_Form.UI
                     PdfService pdf = new PdfService();
                     pdf.GenerarReporteFactura(factura, cliente, sfd.FileName);
                     MessageBox.Show("PDF generado correctamente.");
+                    AbrirUnico(new FrmVisorPDF(sfd.FileName));
                 }
                 catch (Exception ex)
                 {
@@ -96,9 +97,7 @@ namespace Proyect_Sencom_Form.UI
                 MessageBox.Show("Debe generar facturas antes de ver el gráfico.");
                 return;
             }
-            FrmGrafico frm = new FrmGrafico(_controller);
-            ThemeManager.ApplyTheme(frm);
-            frm.ShowDialog();
+            AbrirUnico(new FrmGrafico(_controller));
         }
     }
 }

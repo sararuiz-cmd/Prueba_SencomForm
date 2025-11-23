@@ -80,6 +80,11 @@ namespace Proyect_Sencom_Form.UI
                 Close();
             }
         }
+
+        public void VolverAlPrincipal(string usuario = "")
+        {
+            Program.FormContext.Navigate(new FrmMain(usuario, _controller));
+        }
     }
 }
 

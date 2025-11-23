@@ -61,9 +61,9 @@ namespace Proyect_Sencom_Form.UI
 
                 if (auth.ValidarLogin(usuario, contrasena))
                 {
-                    var frm = new FrmMain(usuario, _controller);
-                    frm.Show();
-                    Hide();
+                    Program.FormContext.CurrentUser = usuario; // guardar usuario
+                    // Navegación única
+                    Program.FormContext.Navigate(new FrmMain(usuario, _controller));
                 }
                 else
                 {

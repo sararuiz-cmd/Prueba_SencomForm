@@ -76,6 +76,11 @@ namespace Proyect_Sencom_Form.UI
             ThemeManager.ApplyTheme(this);
             lblMensaje.Text = string.Empty;
         }
+
+        public void VolverAlPrincipal(string usuario = "")
+        {
+            Program.FormContext.Navigate(new FrmMain(usuario, _controller));
+        }
     }
 }
 
