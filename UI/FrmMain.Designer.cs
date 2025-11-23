@@ -8,6 +8,9 @@
         private System.Windows.Forms.Button btnRegistrarFactura;
         private System.Windows.Forms.Button btnPrediccionIA;
         private System.Windows.Forms.Button btnExportarPdf;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Panel panelBotones;
 
         protected override void Dispose(bool disposing)
         {
@@ -22,61 +25,100 @@
             this.btnRegistrarFactura = new System.Windows.Forms.Button();
             this.btnPrediccionIA = new System.Windows.Forms.Button();
             this.btnExportarPdf = new System.Windows.Forms.Button();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.panelBotones = new System.Windows.Forms.Panel();
+            this.panelHeader.SuspendLayout();
+            this.panelBotones.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Height = 55;
+            this.panelHeader.Controls.Add(this.lblTitulo);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Text = "Menú Principal";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUsuario
             // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(20, 20);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(79, 13);
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.Location = new System.Drawing.Point(20, 65);
+            this.lblUsuario.Size = new System.Drawing.Size(400, 20);
             this.lblUsuario.Text = "Usuario actual:";
+            // 
+            // panelBotones
+            // 
+            this.panelBotones.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelBotones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBotones.Location = new System.Drawing.Point(20, 90);
+            this.panelBotones.Size = new System.Drawing.Size(760, 200);
+            this.panelBotones.Controls.Add(this.btnExportarPdf);
+            this.panelBotones.Controls.Add(this.btnPrediccionIA);
+            this.panelBotones.Controls.Add(this.btnRegistrarFactura);
+            this.panelBotones.Controls.Add(this.btnVerGrafico);
             // 
             // btnVerGrafico
             // 
-            this.btnVerGrafico.Location = new System.Drawing.Point(20, 60);
-            this.btnVerGrafico.Name = "btnVerGrafico";
-            this.btnVerGrafico.Size = new System.Drawing.Size(180, 30);
+            this.btnVerGrafico.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnVerGrafico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerGrafico.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnVerGrafico.ForeColor = System.Drawing.Color.White;
+            this.btnVerGrafico.Location = new System.Drawing.Point(30, 30);
+            this.btnVerGrafico.Size = new System.Drawing.Size(320, 45);
             this.btnVerGrafico.Text = "Ver Gráfico";
-            this.btnVerGrafico.UseVisualStyleBackColor = true;
+            this.btnVerGrafico.UseVisualStyleBackColor = false;
             this.btnVerGrafico.Click += new System.EventHandler(this.btnVerGrafico_Click);
             // 
             // btnRegistrarFactura
             // 
-            this.btnRegistrarFactura.Location = new System.Drawing.Point(220, 60);
-            this.btnRegistrarFactura.Name = "btnRegistrarFactura";
-            this.btnRegistrarFactura.Size = new System.Drawing.Size(180, 30);
+            this.btnRegistrarFactura.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnRegistrarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarFactura.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRegistrarFactura.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrarFactura.Location = new System.Drawing.Point(370, 30);
+            this.btnRegistrarFactura.Size = new System.Drawing.Size(320, 45);
             this.btnRegistrarFactura.Text = "Registrar Factura";
-            this.btnRegistrarFactura.UseVisualStyleBackColor = true;
+            this.btnRegistrarFactura.UseVisualStyleBackColor = false;
             this.btnRegistrarFactura.Click += new System.EventHandler(this.btnRegistrarFactura_Click);
             // 
             // btnPrediccionIA
             // 
-            this.btnPrediccionIA.Location = new System.Drawing.Point(20, 110);
-            this.btnPrediccionIA.Name = "btnPrediccionIA";
-            this.btnPrediccionIA.Size = new System.Drawing.Size(180, 30);
+            this.btnPrediccionIA.BackColor = System.Drawing.Color.DimGray;
+            this.btnPrediccionIA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrediccionIA.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPrediccionIA.ForeColor = System.Drawing.Color.White;
+            this.btnPrediccionIA.Location = new System.Drawing.Point(30, 100);
+            this.btnPrediccionIA.Size = new System.Drawing.Size(320, 45);
             this.btnPrediccionIA.Text = "Predicción IA";
-            this.btnPrediccionIA.UseVisualStyleBackColor = true;
+            this.btnPrediccionIA.UseVisualStyleBackColor = false;
             this.btnPrediccionIA.Click += new System.EventHandler(this.btnPrediccionIA_Click);
             // 
             // btnExportarPdf
             // 
-            this.btnExportarPdf.Location = new System.Drawing.Point(220, 110);
-            this.btnExportarPdf.Name = "btnExportarPdf";
-            this.btnExportarPdf.Size = new System.Drawing.Size(180, 30);
+            this.btnExportarPdf.BackColor = System.Drawing.Color.DimGray;
+            this.btnExportarPdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarPdf.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnExportarPdf.ForeColor = System.Drawing.Color.White;
+            this.btnExportarPdf.Location = new System.Drawing.Point(370, 100);
+            this.btnExportarPdf.Size = new System.Drawing.Size(320, 45);
             this.btnExportarPdf.Text = "Exportar PDF";
-            this.btnExportarPdf.UseVisualStyleBackColor = true;
+            this.btnExportarPdf.UseVisualStyleBackColor = false;
             this.btnExportarPdf.Click += new System.EventHandler(this.btnExportarPdf_Click);
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 180);
-            this.Controls.Add(this.btnExportarPdf);
-            this.Controls.Add(this.btnPrediccionIA);
-            this.Controls.Add(this.btnRegistrarFactura);
-            this.Controls.Add(this.btnVerGrafico);
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClientSize = new System.Drawing.Size(800, 320);
+            this.Controls.Add(this.panelBotones);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.lblUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -84,8 +126,9 @@
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
+            this.panelHeader.ResumeLayout(false);
+            this.panelBotones.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
         }
     }
 }
