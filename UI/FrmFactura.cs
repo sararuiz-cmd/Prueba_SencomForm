@@ -18,6 +18,10 @@ namespace Proyect_Sencom_Form.UI
         private void FrmFactura_Load(object sender, EventArgs e)
         {
             ThemeManager.ApplyTheme(this);
+            // Cargar facturas acumuladas al abrir el formulario
+            dgvFacturas.AutoGenerateColumns = true;
+            dgvFacturas.DataSource = null;
+            dgvFacturas.DataSource = _controller.ObtenerTodasLasFacturas();
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
@@ -56,14 +60,18 @@ namespace Proyect_Sencom_Form.UI
                     Direccion = txtDireccion.Text.Trim()
                 };
 
-                var lista = _controller.GenerarFacturasSimuladas(
+                // Genera y agrega al historial global
+                _controller.GenerarFacturasSimuladas(
                     cli,
                     capacidad,
                     meses,
                     DateTime.Now.AddMonths(-meses)
                 );
 
-                dgvFacturas.DataSource = lista;
+                // Refrescar el grid con todas las facturas acumuladas
+                dgvFacturas.DataSource = null;
+                dgvFacturas.DataSource = _controller.ObtenerTodasLasFacturas();
+
                 lblMensaje.Text = "Facturas generadas correctamente.";
                 lblMensaje.ForeColor = System.Drawing.Color.Green;
             }
