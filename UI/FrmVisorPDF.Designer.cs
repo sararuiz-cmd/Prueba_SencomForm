@@ -7,8 +7,7 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-                components.Dispose();
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
@@ -28,12 +27,16 @@
             // 
             // FrmVisorPDF
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 700);
             this.Controls.Add(this.webBrowser1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmVisorPDF";
-            this.Text = "Visor de PDF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Visor PDF";
             this.Load += new System.EventHandler(this.FrmVisorPDF_Load);
             this.ResumeLayout(false);
         }

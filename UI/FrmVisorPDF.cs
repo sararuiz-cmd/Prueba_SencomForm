@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Proyect_Sencom_Form.Business;
 
 namespace Proyect_Sencom_Form.UI
 {
@@ -17,11 +18,24 @@ namespace Proyect_Sencom_Form.UI
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(rutaPdf))
+                {
+                    MessageBox.Show("Ruta de PDF inválida.");
+                    Close();
+                    return;
+                }
+                if (!System.IO.File.Exists(rutaPdf))
+                {
+                    MessageBox.Show("El archivo PDF no existe.");
+                    Close();
+                    return;
+                }
                 webBrowser1.Navigate(rutaPdf);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al abrir el PDF: " + ex.Message);
+                Close();
             }
         }
     }

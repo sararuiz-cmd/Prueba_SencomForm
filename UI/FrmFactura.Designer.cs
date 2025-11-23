@@ -6,10 +6,7 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
@@ -118,7 +115,7 @@
             // 
             this.lblMensaje.AutoSize = true;
             this.lblMensaje.ForeColor = System.Drawing.Color.Maroon;
-            this.lblMensaje.Location = new System.Drawing.Point(40, 230);
+            this.lblMensaje.Location = new System.Drawing.Point(40, 240);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(0, 13);
             this.lblMensaje.TabIndex = 0;
@@ -137,7 +134,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombreCliente);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Generador de Facturas";
             this.Load += new System.EventHandler(this.FrmFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();

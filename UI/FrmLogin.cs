@@ -40,9 +40,15 @@ namespace Proyect_Sencom_Form.UI
             string usuario = txtUsuario?.Text?.Trim() ?? string.Empty;
             string contrasena = txtContrasena?.Text ?? string.Empty;
 
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
+            if (!ValidadorUsuario.EsUsuarioValido(usuario))
             {
-                lblMensaje.Text = "Ingrese usuario y contraseña.";
+                lblMensaje.Text = "Usuario inválido (3-20 caracteres alfanuméricos).";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                return;
+            }
+            if (string.IsNullOrEmpty(contrasena))
+            {
+                lblMensaje.Text = "Ingrese la contraseña.";
                 lblMensaje.ForeColor = System.Drawing.Color.Red;
                 return;
             }
@@ -75,9 +81,15 @@ namespace Proyect_Sencom_Form.UI
             string usuario = txtUsuario?.Text?.Trim() ?? string.Empty;
             string contrasena = txtContrasena?.Text ?? string.Empty;
 
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
+            if (!ValidadorUsuario.EsUsuarioValido(usuario))
             {
-                lblMensaje.Text = "Ingrese usuario y contraseña para registrar.";
+                lblMensaje.Text = "Usuario inválido (3-20 caracteres alfanuméricos).";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                return;
+            }
+            if (!ValidadorUsuario.EsContrasenaValida(contrasena))
+            {
+                lblMensaje.Text = "Contraseña inválida (mínimo 6, letra y número).";
                 lblMensaje.ForeColor = System.Drawing.Color.Red;
                 return;
             }

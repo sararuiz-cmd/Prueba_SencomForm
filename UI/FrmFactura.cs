@@ -27,32 +27,33 @@ namespace Proyect_Sencom_Form.UI
                 if (!ValidadorFactura.EsNombreValido(txtNombreCliente.Text))
                 {
                     lblMensaje.Text = "Nombre inválido.";
+                    lblMensaje.ForeColor = System.Drawing.Color.Red;
                     return;
                 }
-
                 if (!ValidadorFactura.EsDireccionValida(txtDireccion.Text))
                 {
                     lblMensaje.Text = "Dirección inválida.";
+                    lblMensaje.ForeColor = System.Drawing.Color.Red;
                     return;
                 }
-
-                if (!double.TryParse(txtCapacidadKw.Text, out double capacidad))
+                if (!ValidadorFactura.EsDecimalPositivo(txtCapacidadKw.Text, out double capacidad))
                 {
-                    lblMensaje.Text = "Capacidad inválida.";
+                    lblMensaje.Text = "Capacidad inválida (número positivo).";
+                    lblMensaje.ForeColor = System.Drawing.Color.Red;
                     return;
                 }
-
-                if (!int.TryParse(txtMeses.Text, out int meses))
+                if (!ValidadorFactura.EsEnteroPositivo(txtMeses.Text, out int meses))
                 {
-                    lblMensaje.Text = "Meses inválidos.";
+                    lblMensaje.Text = "Meses inválidos (entero positivo).";
+                    lblMensaje.ForeColor = System.Drawing.Color.Red;
                     return;
                 }
 
                 Cliente cli = new Cliente()
                 {
                     IdCliente = new Random().Next(1, 99999),
-                    Nombre = txtNombreCliente.Text,
-                    Direccion = txtDireccion.Text
+                    Nombre = txtNombreCliente.Text.Trim(),
+                    Direccion = txtDireccion.Text.Trim()
                 };
 
                 var lista = _controller.GenerarFacturasSimuladas(
@@ -64,10 +65,12 @@ namespace Proyect_Sencom_Form.UI
 
                 dgvFacturas.DataSource = lista;
                 lblMensaje.Text = "Facturas generadas correctamente.";
+                lblMensaje.ForeColor = System.Drawing.Color.Green;
             }
             catch (Exception ex)
             {
                 lblMensaje.Text = ex.Message;
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
             }
         }
     }

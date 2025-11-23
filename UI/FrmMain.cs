@@ -12,10 +12,9 @@ namespace Proyect_Sencom_Form.UI
         public FrmMain(string usuario, FacturaController controller)
         {
             InitializeComponent();
-            _controller = controller;
-            _usuario = usuario;
-
-            lblUsuario.Text = "Usuario actual: " + usuario;
+            _controller = controller ?? throw new ArgumentNullException(nameof(controller));
+            _usuario = string.IsNullOrWhiteSpace(usuario) ? "(desconocido)" : usuario.Trim();
+            lblUsuario.Text = "Usuario actual: " + _usuario;
         }
 
         private void btnRegistrarFactura_Click(object sender, EventArgs e)
@@ -33,38 +32,44 @@ namespace Proyect_Sencom_Form.UI
         private void btnExportarPdf_Click(object sender, EventArgs e)
         {
             var lista = _controller.ObtenerTodasLasFacturas();
-
-            if (lista.Count == 0)
+            if (lista == null || lista.Count == 0)
             {
                 MessageBox.Show("No hay facturas para exportar.");
                 return;
             }
-
             var factura = lista[lista.Count - 1];
             var cliente = factura.Cliente;
-
+            if (factura == null || cliente == null)
+            {
+                MessageBox.Show("Datos de factura inválidos.");
+                return;
+            }
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Archivo PDF|*.pdf";
             sfd.FileName = "Factura_" + factura.IdFactura + ".pdf";
-
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                PdfService pdf = new PdfService();
-                pdf.GenerarReporteFactura(factura, cliente, sfd.FileName);
-                MessageBox.Show("PDF generado correctamente.");
+                try
+                {
+                    PdfService pdf = new PdfService();
+                    pdf.GenerarReporteFactura(factura, cliente, sfd.FileName);
+                    MessageBox.Show("PDF generado correctamente.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar PDF: " + ex.Message);
+                }
             }
         }
 
         private void btnVerGrafico_Click(object sender, EventArgs e)
         {
             var lista = _controller.ObtenerTodasLasFacturas();
-
-            if (lista.Count == 0)
+            if (lista == null || lista.Count == 0)
             {
                 MessageBox.Show("Debe generar facturas antes de ver el gráfico.");
                 return;
             }
-
             FrmGrafico frm = new FrmGrafico(_controller);
             frm.ShowDialog();
         }

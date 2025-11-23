@@ -158,6 +158,7 @@
     <Compile Include="Business\PrediccionIAService.cs" />
     <Compile Include="Business\Utilidades.cs" />
     <Compile Include="Business\ValidadorFactura.cs" />
+    <Compile Include="Business\ValidadorUsuario.cs" />
     <Compile Include="Domain\ArbolFacturas.cs" />
     <Compile Include="Domain\Cliente.cs" />
     <Compile Include="Domain\Factura.cs" />
