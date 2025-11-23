@@ -15,7 +15,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVisorPDF));
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -61,7 +60,6 @@
             this.Text = "Visor PDF";
             this.Load += new System.EventHandler(this.FrmVisorPDF_Load);
             this.ResumeLayout(false);
-
         }
     }
 }

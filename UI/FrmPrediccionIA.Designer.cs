@@ -26,7 +26,6 @@ namespace Proyect_Sencom_Form.UI
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrediccionIA));
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.txtMesPrediccion = new System.Windows.Forms.TextBox();
             this.txtResultado = new System.Windows.Forms.TextBox();

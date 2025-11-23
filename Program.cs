@@ -15,8 +15,8 @@ namespace Proyect_Sencom_Form
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            Application.Run(new FrmLogin(ControllerGlobal));
+            FormContext.ShowForm(new FrmLogin(ControllerGlobal));
+            Application.Run(FormContext);
         }
     }
 }

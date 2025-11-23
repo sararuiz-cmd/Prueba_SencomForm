@@ -14,7 +14,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFactura));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -151,16 +150,10 @@
             this.Controls.Add(this.panelInputs);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.dgvFacturas);
-            this.Controls.Add(this.btnGenerar);
-            this.Controls.Add(this.txtMeses);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtCapacidadKw);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtDireccion);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtNombreCliente);
-            this.Controls.Add(this.label1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Controls.Add(this.lblMensaje);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Generador de Facturas";

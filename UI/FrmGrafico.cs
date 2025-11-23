@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Proyect_Sencom_Form.Business;
+using Proyect_Sencom_Form.Domain;
 
 namespace Proyect_Sencom_Form.UI
 {
@@ -12,8 +13,8 @@ namespace Proyect_Sencom_Form.UI
 
         public FrmGrafico(FacturaController controller)
         {
-            _controller = controller;
             InitializeComponent();
+            _controller = controller;
         }
 
         private void FrmGrafico_Load(object sender, EventArgs e)
@@ -48,28 +49,36 @@ namespace Proyect_Sencom_Form.UI
                 serie.XValueType = ChartValueType.String;
                 serie.YValueType = ChartValueType.Double;
 
-            if (historial == null || historial.Count == 0)
-            {
-                MessageBox.Show("No hay facturas registradas para graficar.");
-                return;
+                // ============================
+                // LLENAR DATOS
+                // ============================
+                foreach (var factura in historial)
+                {
+                    string mes = factura.MesNombre ?? "Mes";
+                    double produccion = factura.ProduccionKwhMes;
+
+                    serie.Points.AddXY(mes, produccion);
+                }
+
+                chart1.Series.Add(serie);
+
+                // ============================
+                // AJUSTAR EJE X
+                // ============================
+                if (chart1.ChartAreas.Count > 0)
+                {
+                    chart1.ChartAreas[0].AxisX.Interval = 1;
+                    chart1.ChartAreas[0].AxisX.Title = "Mes";
+                    chart1.ChartAreas[0].AxisY.Title = "Producción (kWh)";
+                }
             }
-
-            chart1.Series.Clear();
-
-            var serie = new Series("Consumo (kWh)");
-            serie.ChartType = SeriesChartType.Column;
-            serie.XValueType = ChartValueType.String;
-            serie.YValueType = ChartValueType.Double;
-
-            foreach (var f in historial.OrderBy(h => h.MesNumero))
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al generar el gráfico:\n" + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Close();
             }
-
-            chart1.Series.Add(serie);
         }
 
         public void VolverAlPrincipal(string usuario = "")
@@ -78,3 +87,4 @@ namespace Proyect_Sencom_Form.UI
         }
     }
 }
+

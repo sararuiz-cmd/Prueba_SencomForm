@@ -20,7 +20,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnVerGrafico = new System.Windows.Forms.Button();
             this.btnRegistrarFactura = new System.Windows.Forms.Button();
@@ -113,26 +112,6 @@
             this.btnExportarPdf.Text = "Exportar PDF";
             this.btnExportarPdf.UseVisualStyleBackColor = false;
             this.btnExportarPdf.Click += new System.EventHandler(this.btnExportarPdf_Click);
-            // 
-            // btnBuscarFactura
-            // 
-            this.btnBuscarFactura.Location = new System.Drawing.Point(250, 320);
-            this.btnBuscarFactura.Name = "btnBuscarFactura";
-            this.btnBuscarFactura.Size = new System.Drawing.Size(280, 40);
-            this.btnBuscarFactura.TabIndex = 5;
-            this.btnBuscarFactura.Text = "Buscar Factura por ID";
-            this.btnBuscarFactura.UseVisualStyleBackColor = true;
-            this.btnBuscarFactura.Click += new System.EventHandler(this.btnBuscarFactura_Click);
-            // 
-            // btnVerOrdenadas
-            // 
-            this.btnVerOrdenadas.Location = new System.Drawing.Point(250, 380);
-            this.btnVerOrdenadas.Name = "btnVerOrdenadas";
-            this.btnVerOrdenadas.Size = new System.Drawing.Size(280, 40);
-            this.btnVerOrdenadas.TabIndex = 6;
-            this.btnVerOrdenadas.Text = "Ver Facturas Ordenadas por Cliente";
-            this.btnVerOrdenadas.UseVisualStyleBackColor = true;
-            this.btnVerOrdenadas.Click += new System.EventHandler(this.btnVerOrdenadas_Click);
             // 
             // FrmMain
             // 

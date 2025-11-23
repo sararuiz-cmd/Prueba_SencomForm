@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using Proyect_Sencom_Form.Business;
-using Proyect_Sencom_Form.Domain;
-
 
 namespace Proyect_Sencom_Form.UI
 {
@@ -46,22 +43,6 @@ namespace Proyect_Sencom_Form.UI
         {
             ThemeManager.ApplyTheme(frm);
             Program.FormContext.Navigate(frm);
-        }
-
-        private void btnVerGrafico_Click(object sender, EventArgs e)
-        {
-            var historial = _controller.ObtenerHistorialCompleto();
-
-            if (historial == null || historial.Count == 0)
-            {
-                MessageBox.Show("No hay facturas registradas para graficar.", "Sin datos");
-                return;
-            }
-
-            using (var frm = new FrmGrafico(_controller))
-            {
-                frm.ShowDialog();
-            }
         }
 
         private void btnRegistrarFactura_Click(object sender, EventArgs e)
@@ -108,16 +89,17 @@ namespace Proyect_Sencom_Form.UI
             }
         }
 
-        private void btnBuscarFactura_Click(object sender, EventArgs e)
+        private void btnVerGrafico_Click(object sender, EventArgs e)
         {
             var lista = _controller.ObtenerTodasLasFacturas();
             if (lista == null || lista.Count == 0)
             {
-                MessageBox.Show("No se encontró esa factura.");
+                MessageBox.Show("Debe generar facturas antes de ver el gráfico.");
                 return;
             }
             AbrirUnico(new FrmGrafico(_controller));
         }
     }
 }
+
 

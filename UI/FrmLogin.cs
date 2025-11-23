@@ -39,8 +39,8 @@ namespace Proyect_Sencom_Form.UI
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            // aquí podrías validar usuario/contraseña; por ahora dejamos “admin”
-            string usuario = "admin";
+            string usuario = txtUsuario?.Text?.Trim() ?? string.Empty;
+            string contrasena = txtContrasena?.Text ?? string.Empty;
 
             if (!ValidadorUsuario.EsUsuarioValido(usuario))
             {
@@ -119,3 +119,4 @@ namespace Proyect_Sencom_Form.UI
         }
     }
 }
+
