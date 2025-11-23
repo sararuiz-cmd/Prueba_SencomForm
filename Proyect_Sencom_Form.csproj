@@ -179,12 +179,6 @@
     <Compile Include="UI\FrmGrafico.Designer.cs">
       <DependentUpon>FrmGrafico.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmListaFacturas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmListaFacturas.Designer.cs">
-      <DependentUpon>FrmListaFacturas.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,7 +203,6 @@
     <Compile Include="UI\FrmVisorPDF.Designer.cs">
       <DependentUpon>FrmVisorPDF.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Prompt.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -218,15 +211,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\FrmFactura.resx">
       <DependentUpon>FrmFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmGrafico.resx">
       <DependentUpon>FrmGrafico.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmListaFacturas.resx">
-      <DependentUpon>FrmListaFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -254,6 +245,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagensinfondo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
