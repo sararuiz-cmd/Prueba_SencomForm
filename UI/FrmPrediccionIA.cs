@@ -61,6 +61,11 @@ namespace Proyect_Sencom_Form.UI
 
             txtResultado.Text = prediccion.ToString("C2");
         }
+
+        private void FrmPrediccionIA_Load(object sender, EventArgs e)
+        {
+            // Inicialización necesaria al cargar el formulario, si aplica.
+        }
     }
 }
 

@@ -139,7 +139,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmFactura";
             this.Text = "Generador de Facturas";
-            this.Load += new System.EventHandler(this.FrmFactura_Load_1);
+            this.Load += new System.EventHandler(this.FrmFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
