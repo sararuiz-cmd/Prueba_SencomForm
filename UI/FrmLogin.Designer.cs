@@ -106,9 +106,8 @@
             this.Controls.Add(this.txtUsuario);
             this.Name = "FrmLogin";
             this.Text = "Inicio de Sesión";
-            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
+
 
         }
 
