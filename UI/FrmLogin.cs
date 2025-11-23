@@ -37,72 +37,22 @@ namespace Proyect_Sencom_Form.UI
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            string usuario = txtUsuario?.Text?.Trim() ?? string.Empty;
-            string contrasena = txtContrasena?.Text ?? string.Empty;
+            // aquí podrías validar usuario/contraseña; por ahora dejamos “admin”
+            string usuario = "admin";
 
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
-            {
-                lblMensaje.Text = "Ingrese usuario y contraseña.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
-                return;
-            }
-
-            try
-            {
-                AuthService auth = new AuthService();
-
-                if (auth.ValidarLogin(usuario, contrasena))
-                {
-                    var frm = new FrmMain(usuario, _controller);
-                    frm.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    lblMensaje.Text = "Usuario o contraseña incorrectos.";
-                    lblMensaje.ForeColor = System.Drawing.Color.Red;
-                }
-            }
-            catch (Exception)
-            {
-                lblMensaje.Text = "Error al procesar el inicio de sesión.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
-            }
+            var main = new FrmMain(usuario, _controller);
+            main.Show();
+            this.Hide();
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            string usuario = txtUsuario?.Text?.Trim() ?? string.Empty;
-            string contrasena = txtContrasena?.Text ?? string.Empty;
+            MessageBox.Show("Registro simulado (puedes implementar Auth real después).");
+        }
 
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
-            {
-                lblMensaje.Text = "Ingrese usuario y contraseña para registrar.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
-                return;
-            }
+        private void label2_Click(object sender, EventArgs e)
+        {
 
-            try
-            {
-                AuthService auth = new AuthService();
-
-                if (auth.RegistrarUsuario(usuario, contrasena, out string mensaje))
-                {
-                    lblMensaje.ForeColor = System.Drawing.Color.Green;
-                }
-                else
-                {
-                    lblMensaje.ForeColor = System.Drawing.Color.Red;
-                }
-
-                lblMensaje.Text = mensaje;
-            }
-            catch (Exception)
-            {
-                lblMensaje.Text = "Error al registrar usuario.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
-            }
         }
     }
 }
-

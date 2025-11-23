@@ -19,6 +19,7 @@ namespace Proyect_Sencom_Form.UI
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrediccionIA));
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.txtMesPrediccion = new System.Windows.Forms.TextBox();
             this.txtResultado = new System.Windows.Forms.TextBox();
@@ -36,7 +37,7 @@ namespace Proyect_Sencom_Form.UI
             this.txtNombreCliente.Location = new System.Drawing.Point(188, 65);
             this.txtNombreCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(166, 25);
+            this.txtNombreCliente.Size = new System.Drawing.Size(220, 30);
             this.txtNombreCliente.TabIndex = 0;
             // 
             // txtMesPrediccion
@@ -45,7 +46,7 @@ namespace Proyect_Sencom_Form.UI
             this.txtMesPrediccion.Location = new System.Drawing.Point(188, 114);
             this.txtMesPrediccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMesPrediccion.Name = "txtMesPrediccion";
-            this.txtMesPrediccion.Size = new System.Drawing.Size(166, 25);
+            this.txtMesPrediccion.Size = new System.Drawing.Size(220, 30);
             this.txtMesPrediccion.TabIndex = 1;
             // 
             // txtResultado
@@ -55,8 +56,8 @@ namespace Proyect_Sencom_Form.UI
             this.txtResultado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(166, 25);
-            this.txtResultado.TabIndex = 5;
+            this.txtResultado.Size = new System.Drawing.Size(220, 30);
+            this.txtResultado.TabIndex = 2;
             // 
             // lblMensaje
             // 
@@ -137,10 +138,9 @@ namespace Proyect_Sencom_Form.UI
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.txtMesPrediccion);
             this.Controls.Add(this.txtNombreCliente);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrediccionIA";
             this.Text = "Módulo de Predicción con IA";
-            this.Load += new System.EventHandler(this.FrmPrediccionIA_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
