@@ -8,6 +8,7 @@ namespace Proyect_Sencom_Form.UI
     {
         private readonly FacturaController _controller;
         private readonly string _usuario;
+        private Button btnToggleTheme;
 
         public FrmMain(string usuario, FacturaController controller)
         {
@@ -15,17 +16,42 @@ namespace Proyect_Sencom_Form.UI
             _controller = controller ?? throw new ArgumentNullException(nameof(controller));
             _usuario = string.IsNullOrWhiteSpace(usuario) ? "(desconocido)" : usuario.Trim();
             lblUsuario.Text = "Usuario actual: " + _usuario;
+
+            // Cargar tema y aplicar
+            ThemeManager.LoadTheme();
+            AddThemeToggleButton();
+            ThemeManager.ApplyTheme(this);
+        }
+
+        private void AddThemeToggleButton()
+        {
+            btnToggleTheme = new Button();
+            btnToggleTheme.Text = ThemeManager.CurrentTheme == AppTheme.Dark ? "Modo Claro" : "Modo Oscuro";
+            btnToggleTheme.Width = 120;
+            btnToggleTheme.Height = 30;
+            btnToggleTheme.Top = 60;
+            btnToggleTheme.Left = 600;
+            btnToggleTheme.FlatStyle = FlatStyle.Flat;
+            btnToggleTheme.Click += (s, e) =>
+            {
+                ThemeManager.ToggleTheme();
+                btnToggleTheme.Text = ThemeManager.CurrentTheme == AppTheme.Dark ? "Modo Claro" : "Modo Oscuro";
+            };
+            Controls.Add(btnToggleTheme);
+            btnToggleTheme.BringToFront();
         }
 
         private void btnRegistrarFactura_Click(object sender, EventArgs e)
         {
             FrmFactura frm = new FrmFactura(_controller);
+            ThemeManager.ApplyTheme(frm);
             frm.ShowDialog();
         }
 
         private void btnPrediccionIA_Click(object sender, EventArgs e)
         {
             FrmPrediccionIA frm = new FrmPrediccionIA(_controller);
+            ThemeManager.ApplyTheme(frm);
             frm.ShowDialog();
         }
 
@@ -71,6 +97,7 @@ namespace Proyect_Sencom_Form.UI
                 return;
             }
             FrmGrafico frm = new FrmGrafico(_controller);
+            ThemeManager.ApplyTheme(frm);
             frm.ShowDialog();
         }
     }

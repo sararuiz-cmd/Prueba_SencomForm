@@ -16,6 +16,7 @@ namespace Proyect_Sencom_Form.UI
 
         private void FrmVisorPDF_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             try
             {
                 if (string.IsNullOrWhiteSpace(rutaPdf))

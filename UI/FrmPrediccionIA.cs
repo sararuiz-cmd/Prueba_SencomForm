@@ -23,7 +23,7 @@ namespace Proyect_Sencom_Form.UI
             if (historial == null || historial.Count == 0)
             {
                 lblMensaje.Text = "No hay datos para entrenar.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
             _ia.EntrenarModelo(historial);
@@ -37,27 +37,26 @@ namespace Proyect_Sencom_Form.UI
             if (!_modeloEntrenado)
             {
                 lblMensaje.Text = "Primero entrene el modelo.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
             string nombre = txtNombreCliente.Text.Trim();
             if (!ValidadorFactura.EsNombreValido(nombre))
             {
                 lblMensaje.Text = "Nombre inválido.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
             var lista = _controller.ObtenerHistorialPorCliente(nombre.ToLower());
             if (lista == null || lista.Count == 0)
             {
                 lblMensaje.Text = "No hay historial para ese cliente.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
             int mesPrediccion;
             if (!int.TryParse(txtMesPrediccion.Text.Trim(), out mesPrediccion) || mesPrediccion < 1 || mesPrediccion > 12)
             {
-                // Si no se proporciona mes válido, usar siguiente al último.
                 mesPrediccion = lista.Last().MesNumero + 1;
                 if (mesPrediccion > 12) mesPrediccion = 12;
             }
@@ -74,7 +73,7 @@ namespace Proyect_Sencom_Form.UI
 
         private void FrmPrediccionIA_Load(object sender, EventArgs e)
         {
-            // Inicialización necesaria al cargar el formulario, si aplica.
+            ThemeManager.ApplyTheme(this);
             lblMensaje.Text = string.Empty;
         }
     }

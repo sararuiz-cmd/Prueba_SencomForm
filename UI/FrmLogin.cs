@@ -12,6 +12,8 @@ namespace Proyect_Sencom_Form.UI
         {
             InitializeComponent();
             _controller = controller;
+            ThemeManager.LoadTheme();
+            ThemeManager.ApplyTheme(this);
 
             // Asegurar suscripción a eventos en caso de que no esté configurada en el diseñador
             if (btnIniciarSesion != null)
@@ -43,13 +45,13 @@ namespace Proyect_Sencom_Form.UI
             if (!ValidadorUsuario.EsUsuarioValido(usuario))
             {
                 lblMensaje.Text = "Usuario inválido (3-20 caracteres alfanuméricos).";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
             if (string.IsNullOrEmpty(contrasena))
             {
                 lblMensaje.Text = "Ingrese la contraseña.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
 
@@ -61,18 +63,18 @@ namespace Proyect_Sencom_Form.UI
                 {
                     var frm = new FrmMain(usuario, _controller);
                     frm.Show();
-                    this.Hide();
+                    Hide();
                 }
                 else
                 {
                     lblMensaje.Text = "Usuario o contraseña incorrectos.";
-                    lblMensaje.ForeColor = System.Drawing.Color.Red;
+                    lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 }
             }
             catch (Exception)
             {
                 lblMensaje.Text = "Error al procesar el inicio de sesión.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
             }
         }
 
@@ -84,13 +86,13 @@ namespace Proyect_Sencom_Form.UI
             if (!ValidadorUsuario.EsUsuarioValido(usuario))
             {
                 lblMensaje.Text = "Usuario inválido (3-20 caracteres alfanuméricos).";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
             if (!ValidadorUsuario.EsContrasenaValida(contrasena))
             {
                 lblMensaje.Text = "Contraseña inválida (mínimo 6, letra y número).";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
 
@@ -104,7 +106,7 @@ namespace Proyect_Sencom_Form.UI
                 }
                 else
                 {
-                    lblMensaje.ForeColor = System.Drawing.Color.Red;
+                    lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 }
 
                 lblMensaje.Text = mensaje;
@@ -112,7 +114,7 @@ namespace Proyect_Sencom_Form.UI
             catch (Exception)
             {
                 lblMensaje.Text = "Error al registrar usuario.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
             }
         }
     }

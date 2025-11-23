@@ -17,7 +17,7 @@ namespace Proyect_Sencom_Form.UI
 
         private void FrmFactura_Load(object sender, EventArgs e)
         {
-            // Inicialización necesaria al cargar el formulario
+            ThemeManager.ApplyTheme(this);
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)

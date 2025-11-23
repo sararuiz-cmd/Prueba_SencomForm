@@ -19,6 +19,7 @@ namespace Proyect_Sencom_Form.UI
 
         private void FrmGrafico_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             try
             {
                 var historial = _controller.ObtenerTodasLasFacturas();
@@ -31,7 +32,7 @@ namespace Proyect_Sencom_Form.UI
                     MessageBox.Show("No hay facturas registradas para graficar.",
                         "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                    this.Close();
+                    Close();
                     return;
                 }
 
@@ -76,7 +77,7 @@ namespace Proyect_Sencom_Form.UI
                 MessageBox.Show("Error al generar el gráfico:\n" + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                this.Close();
+                Close();
             }
         }
     }

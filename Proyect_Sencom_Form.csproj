@@ -156,6 +156,7 @@
     <Compile Include="Business\FacturaController.cs" />
     <Compile Include="Business\PdfService.cs" />
     <Compile Include="Business\PrediccionIAService.cs" />
+    <Compile Include="Business\ThemeManager.cs" />
     <Compile Include="Business\Utilidades.cs" />
     <Compile Include="Business\ValidadorFactura.cs" />
     <Compile Include="Business\ValidadorUsuario.cs" />
