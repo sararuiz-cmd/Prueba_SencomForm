@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography; // añadido para hashing
 
 namespace Proyect_Sencom_Form.Business
 {
@@ -55,7 +56,9 @@ namespace Proyect_Sencom_Form.Business
                 mensaje = "El usuario ya existe.";
                 return false;
             }
-            _usuarios.Add(usuario, contrasena);
+            // Hash de la contraseña antes de almacenar
+            var hash = HashPassword(contrasena);
+            _usuarios.Add(usuario, hash);
             GuardarUsuarios();
             mensaje = "Usuario registrado correctamente.";
             return true;
@@ -65,7 +68,62 @@ namespace Proyect_Sencom_Form.Business
         {
             usuario = (usuario ?? "").Trim();
             contrasena = (contrasena ?? "").Trim();
-            return _usuarios.TryGetValue(usuario, out var pass) && pass == contrasena;
+            if (!_usuarios.TryGetValue(usuario, out var stored)) return false;
+            return VerifyPassword(contrasena, stored);
+        }
+
+        // PBKDF2 hashing con salt y número de iteraciones
+        private static string HashPassword(string password)
+        {
+            const int iterations = 10000;
+            const int saltSize = 16;
+            const int hashSize = 32;
+
+            var salt = new byte[saltSize];
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(salt);
+            }
+            byte[] hash;
+            using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations))
+            {
+                hash = pbkdf2.GetBytes(hashSize);
+            }
+            return $"{iterations}.{Convert.ToBase64String(salt)}.{Convert.ToBase64String(hash)}";
+        }
+
+        private static bool VerifyPassword(string password, string stored)
+        {
+            if (string.IsNullOrEmpty(stored)) return false;
+            var parts = stored.Split('.');
+            if (parts.Length != 3 || !int.TryParse(parts[0], out var iterations))
+            {
+                // Compatibilidad con formato antiguo (texto plano)
+                return password == stored;
+            }
+            try
+            {
+                var salt = Convert.FromBase64String(parts[1]);
+                var storedHash = Convert.FromBase64String(parts[2]);
+                byte[] computed;
+                using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations))
+                {
+                    computed = pbkdf2.GetBytes(storedHash.Length);
+                }
+                return FixedTimeEquals(storedHash, computed);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static bool FixedTimeEquals(byte[] a, byte[] b)
+        {
+            if (a == null || b == null || a.Length != b.Length) return false;
+            int diff = 0;
+            for (int i = 0; i < a.Length; i++) diff |= a[i] ^ b[i];
+            return diff == 0;
         }
     }
 }

@@ -14,22 +14,20 @@ namespace Proyect_Sencom_Form.UI
         public FrmPrediccionIA(FacturaController controller)
         {
             InitializeComponent();
-            _controller = controller;
+            _controller = controller ?? throw new ArgumentNullException(nameof(controller));
         }
 
         private void btnEntrenar_Click(object sender, EventArgs e)
         {
             var historial = _controller.ObtenerHistorialCompleto();
-
-            if (historial.Count == 0)
+            if (historial == null || historial.Count == 0)
             {
                 lblMensaje.Text = "No hay datos para entrenar.";
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
-
             _ia.EntrenarModelo(historial);
             _modeloEntrenado = true;
-
             lblMensaje.Text = "Modelo entrenado.";
             lblMensaje.ForeColor = System.Drawing.Color.Green;
         }
@@ -39,32 +37,49 @@ namespace Proyect_Sencom_Form.UI
             if (!_modeloEntrenado)
             {
                 lblMensaje.Text = "Primero entrene el modelo.";
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
-
-            string nombre = txtNombreCliente.Text.Trim().ToLower();
-            var lista = _controller.ObtenerHistorialPorCliente(nombre);
-
-            if (lista.Count == 0)
+            string nombre = txtNombreCliente.Text.Trim();
+            if (!ValidadorFactura.EsNombreValido(nombre))
+            {
+                lblMensaje.Text = "Nombre inválido.";
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
+                return;
+            }
+            var lista = _controller.ObtenerHistorialPorCliente(nombre.ToLower());
+            if (lista == null || lista.Count == 0)
             {
                 lblMensaje.Text = "No hay historial para ese cliente.";
+                lblMensaje.ForeColor = System.Drawing.Color.Maroon;
                 return;
             }
-
+            int mesPrediccion;
+            if (!int.TryParse(txtMesPrediccion.Text.Trim(), out mesPrediccion) || mesPrediccion < 1 || mesPrediccion > 12)
+            {
+                mesPrediccion = lista.Last().MesNumero + 1;
+                if (mesPrediccion > 12) mesPrediccion = 12;
+            }
             var ultima = lista.Last();
-
             float prediccion = _ia.PredecirMonto(
-                ultima.MesNumero + 1,
+                mesPrediccion,
                 ultima.ProduccionKwhMes,
                 ultima.CapacidadPlantaKw
             );
-
             txtResultado.Text = prediccion.ToString("C2");
+            lblMensaje.Text = "Predicción generada.";
+            lblMensaje.ForeColor = System.Drawing.Color.Green;
         }
 
         private void FrmPrediccionIA_Load(object sender, EventArgs e)
         {
-            // Inicialización necesaria al cargar el formulario, si aplica.
+            ThemeManager.ApplyTheme(this);
+            lblMensaje.Text = string.Empty;
+        }
+
+        public void VolverAlPrincipal(string usuario = "")
+        {
+            Program.FormContext.Navigate(new FrmMain(usuario, _controller));
         }
     }
 }

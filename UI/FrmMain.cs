@@ -11,14 +11,41 @@ namespace Proyect_Sencom_Form.UI
     {
         private readonly FacturaController _controller;
         private readonly string _usuario;
+        private Button btnToggleTheme; // eliminado btnSalir
 
         public FrmMain(string usuario, FacturaController controller)
         {
             InitializeComponent();
-            _controller = controller;
-            _usuario = usuario;
+            _controller = controller ?? throw new ArgumentNullException(nameof(controller));
+            _usuario = string.IsNullOrWhiteSpace(usuario) ? "(desconocido)" : usuario.Trim();
+            lblUsuario.Text = "Usuario actual: " + _usuario;
+            ThemeManager.LoadTheme();
+            AddThemeToggleButton();
+            ThemeManager.ApplyTheme(this);
+        }
 
-            lblUsuario.Text = "Usuario actual: " + usuario;
+        private void AddThemeToggleButton()
+        {
+            btnToggleTheme = new Button();
+            btnToggleTheme.Text = ThemeManager.CurrentTheme == AppTheme.Dark ? "Modo Claro" : "Modo Oscuro";
+            btnToggleTheme.Width = 120;
+            btnToggleTheme.Height = 30;
+            btnToggleTheme.Top = 60;
+            btnToggleTheme.Left = 600;
+            btnToggleTheme.FlatStyle = FlatStyle.Flat;
+            btnToggleTheme.Click += (s, e) =>
+            {
+                ThemeManager.ToggleTheme();
+                btnToggleTheme.Text = ThemeManager.CurrentTheme == AppTheme.Dark ? "Modo Claro" : "Modo Oscuro";
+            };
+            Controls.Add(btnToggleTheme);
+            btnToggleTheme.BringToFront();
+        }
+
+        private void AbrirUnico(Form frm)
+        {
+            ThemeManager.ApplyTheme(frm);
+            Program.FormContext.Navigate(frm);
         }
 
         private void btnVerGrafico_Click(object sender, EventArgs e)
@@ -39,18 +66,12 @@ namespace Proyect_Sencom_Form.UI
 
         private void btnRegistrarFactura_Click(object sender, EventArgs e)
         {
-            using (var frm = new FrmFactura(_controller))
-            {
-                frm.ShowDialog();
-            }
+            AbrirUnico(new FrmFactura(_controller));
         }
 
         private void btnPrediccionIA_Click(object sender, EventArgs e)
         {
-            using (var frm = new FrmPrediccionIA(_controller))
-            {
-                frm.ShowDialog();
-            }
+            AbrirUnico(new FrmPrediccionIA(_controller));
         }
 
         private void btnExportarPdf_Click(object sender, EventArgs e)
@@ -61,70 +82,41 @@ namespace Proyect_Sencom_Form.UI
                 MessageBox.Show("No hay facturas para exportar.");
                 return;
             }
-
-            var factura = lista.Last();
-            var sfd = new SaveFileDialog
+            var factura = lista[lista.Count - 1];
+            var cliente = factura.Cliente;
+            if (factura == null || cliente == null)
             {
-                Filter = "Archivo PDF (*.pdf)|*.pdf",
-                FileName = $"Factura_{factura.IdFactura}.pdf"
-            };
-
+                MessageBox.Show("Datos de factura inválidos.");
+                return;
+            }
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivo PDF|*.pdf";
+            sfd.FileName = "Factura_" + factura.IdFactura + ".pdf";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                var pdf = new PdfService();
-                pdf.GenerarReporteFactura(factura, factura.Cliente, sfd.FileName);
-                MessageBox.Show("Archivo exportado (simulación de PDF).");
+                try
+                {
+                    PdfService pdf = new PdfService();
+                    pdf.GenerarReporteFactura(factura, cliente, sfd.FileName);
+                    MessageBox.Show("PDF generado correctamente.");
+                    AbrirUnico(new FrmVisorPDF(sfd.FileName));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar PDF: " + ex.Message);
+                }
             }
         }
 
         private void btnBuscarFactura_Click(object sender, EventArgs e)
         {
-            string input = Prompt.ShowDialog(
-                "Ingrese el ID de la factura a buscar:",
-                "Buscar factura por ID");
-
-            if (!int.TryParse(input, out int id))
-            {
-                MessageBox.Show("ID inválido.");
-                return;
-            }
-
-            var factura = _controller.BuscarFacturaPorId(id);
-
-            if (factura == null)
+            var lista = _controller.ObtenerTodasLasFacturas();
+            if (lista == null || lista.Count == 0)
             {
                 MessageBox.Show("No se encontró esa factura.");
                 return;
             }
-
-            MessageBox.Show(
-                $"Factura {factura.IdFactura}\n" +
-                $"Cliente: {factura.Cliente?.Nombre}\n" +
-                $"Mes: {factura.MesNombre}\n" +
-                $"Producción: {factura.ProduccionKwhMes:F2} kWh\n" +
-                $"Monto: {factura.MontoMes:C2}",
-                "Detalle de factura");
-        }
-
-
-        private void btnVerOrdenadas_Click(object sender, EventArgs e)
-        {
-            var lista = _controller.ObtenerTodasLasFacturas();
-            if (lista == null || lista.Count == 0)
-            {
-                MessageBox.Show("No hay facturas registradas.");
-                return;
-            }
-
-            var ordenadas = lista
-                .OrderBy(f => f.Cliente?.Nombre)
-                .ThenBy(f => f.MesNumero)
-                .ToList();
-
-            using (var frm = new FrmListaFacturas(ordenadas))
-            {
-                frm.ShowDialog();
-            }
+            AbrirUnico(new FrmGrafico(_controller));
         }
     }
 }

@@ -18,7 +18,35 @@ namespace Proyect_Sencom_Form.UI
 
         private void FrmGrafico_Load(object sender, EventArgs e)
         {
-            var historial = _controller.ObtenerHistorialCompleto();
+            ThemeManager.ApplyTheme(this);
+            try
+            {
+                var historial = _controller.ObtenerTodasLasFacturas();
+
+                // ============================
+                // VALIDAR DATOS VACÍOS
+                // ============================
+                if (historial == null || historial.Count == 0)
+                {
+                    MessageBox.Show("No hay facturas registradas para graficar.",
+                        "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    Close();
+                    return;
+                }
+
+                // ============================
+                // LIMPIAR SERIES ANTERIORES
+                // ============================
+                chart1.Series.Clear();
+
+                // ============================
+                // SERIE DEL GRÁFICO
+                // ============================
+                Series serie = new Series("Producción Mensual (kWh)");
+                serie.ChartType = SeriesChartType.Column;
+                serie.XValueType = ChartValueType.String;
+                serie.YValueType = ChartValueType.Double;
 
             if (historial == null || historial.Count == 0)
             {
@@ -35,10 +63,18 @@ namespace Proyect_Sencom_Form.UI
 
             foreach (var f in historial.OrderBy(h => h.MesNumero))
             {
-                serie.Points.AddXY(f.MesNombre, f.ProduccionKwhMes);
+                MessageBox.Show("Error al generar el gráfico:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Close();
             }
 
             chart1.Series.Add(serie);
+        }
+
+        public void VolverAlPrincipal(string usuario = "")
+        {
+            Program.FormContext.Navigate(new FrmMain(usuario, _controller));
         }
     }
 }

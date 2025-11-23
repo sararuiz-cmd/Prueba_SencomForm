@@ -1,14 +1,14 @@
-﻿using System;
-using System.Windows.Forms;
-using Proyect_Sencom_Form.Business;
+﻿using Proyect_Sencom_Form.Business;
 using Proyect_Sencom_Form.UI;
+using System;
+using System.Windows.Forms;
 
 namespace Proyect_Sencom_Form
 {
     static class Program
     {
-        // Controlador compartido para toda la app
         public static FacturaController ControllerGlobal = new FacturaController();
+        public static SingleFormContext FormContext = new SingleFormContext();
 
         [STAThread]
         static void Main()
