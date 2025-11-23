@@ -33,45 +33,50 @@ namespace Proyect_Sencom_Form.UI
             // txtNombreCliente
             // 
             this.txtNombreCliente.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNombreCliente.Location = new System.Drawing.Point(250, 80);
+            this.txtNombreCliente.Location = new System.Drawing.Point(188, 65);
+            this.txtNombreCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(220, 25);
+            this.txtNombreCliente.Size = new System.Drawing.Size(166, 25);
             this.txtNombreCliente.TabIndex = 0;
             // 
             // txtMesPrediccion
             // 
             this.txtMesPrediccion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtMesPrediccion.Location = new System.Drawing.Point(250, 140);
+            this.txtMesPrediccion.Location = new System.Drawing.Point(188, 114);
+            this.txtMesPrediccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMesPrediccion.Name = "txtMesPrediccion";
-            this.txtMesPrediccion.Size = new System.Drawing.Size(220, 25);
+            this.txtMesPrediccion.Size = new System.Drawing.Size(166, 25);
             this.txtMesPrediccion.TabIndex = 1;
             // 
             // txtResultado
             // 
             this.txtResultado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtResultado.Location = new System.Drawing.Point(250, 295);
+            this.txtResultado.Location = new System.Drawing.Point(188, 240);
+            this.txtResultado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(220, 25);
-            this.txtResultado.TabIndex = 2;
+            this.txtResultado.Size = new System.Drawing.Size(166, 25);
+            this.txtResultado.TabIndex = 5;
             // 
             // lblMensaje
             // 
             this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblMensaje.ForeColor = System.Drawing.Color.Red;
-            this.lblMensaje.Location = new System.Drawing.Point(20, 340);
+            this.lblMensaje.Location = new System.Drawing.Point(15, 276);
+            this.lblMensaje.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(760, 30);
+            this.lblMensaje.Size = new System.Drawing.Size(570, 24);
             this.lblMensaje.TabIndex = 3;
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnEntrenar
             // 
             this.btnEntrenar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnEntrenar.Location = new System.Drawing.Point(250, 190);
+            this.btnEntrenar.Location = new System.Drawing.Point(188, 154);
+            this.btnEntrenar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEntrenar.Name = "btnEntrenar";
-            this.btnEntrenar.Size = new System.Drawing.Size(220, 30);
-            this.btnEntrenar.TabIndex = 4;
+            this.btnEntrenar.Size = new System.Drawing.Size(165, 24);
+            this.btnEntrenar.TabIndex = 3;
             this.btnEntrenar.Text = "Entrenar Modelo";
             this.btnEntrenar.UseVisualStyleBackColor = true;
             this.btnEntrenar.Click += new System.EventHandler(this.btnEntrenar_Click);
@@ -79,10 +84,11 @@ namespace Proyect_Sencom_Form.UI
             // btnPredecir
             // 
             this.btnPredecir.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnPredecir.Location = new System.Drawing.Point(250, 230);
+            this.btnPredecir.Location = new System.Drawing.Point(188, 187);
+            this.btnPredecir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPredecir.Name = "btnPredecir";
-            this.btnPredecir.Size = new System.Drawing.Size(220, 30);
-            this.btnPredecir.TabIndex = 5;
+            this.btnPredecir.Size = new System.Drawing.Size(165, 24);
+            this.btnPredecir.TabIndex = 4;
             this.btnPredecir.Text = "Realizar Predicción";
             this.btnPredecir.UseVisualStyleBackColor = true;
             this.btnPredecir.Click += new System.EventHandler(this.btnPredecir_Click);
@@ -90,35 +96,38 @@ namespace Proyect_Sencom_Form.UI
             // lblCliente
             // 
             this.lblCliente.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCliente.Location = new System.Drawing.Point(250, 60);
+            this.lblCliente.Location = new System.Drawing.Point(188, 49);
+            this.lblCliente.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(200, 20);
+            this.lblCliente.Size = new System.Drawing.Size(150, 16);
             this.lblCliente.TabIndex = 6;
             this.lblCliente.Text = "Nombre del Cliente:";
             // 
             // lblMes
             // 
             this.lblMes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblMes.Location = new System.Drawing.Point(250, 120);
+            this.lblMes.Location = new System.Drawing.Point(188, 98);
+            this.lblMes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMes.Name = "lblMes";
-            this.lblMes.Size = new System.Drawing.Size(200, 20);
+            this.lblMes.Size = new System.Drawing.Size(150, 16);
             this.lblMes.TabIndex = 7;
             this.lblMes.Text = "Mes a Predecir:";
             // 
             // lblResultado
             // 
             this.lblResultado.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblResultado.Location = new System.Drawing.Point(250, 272);
+            this.lblResultado.Location = new System.Drawing.Point(188, 221);
+            this.lblResultado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(200, 20);
+            this.lblResultado.Size = new System.Drawing.Size(150, 16);
             this.lblResultado.TabIndex = 8;
             this.lblResultado.Text = "Resultado:";
             // 
             // FrmPrediccionIA
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.lblMes);
             this.Controls.Add(this.lblCliente);
@@ -128,6 +137,7 @@ namespace Proyect_Sencom_Form.UI
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.txtMesPrediccion);
             this.Controls.Add(this.txtNombreCliente);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmPrediccionIA";
             this.Text = "Módulo de Predicción con IA";
             this.Load += new System.EventHandler(this.FrmPrediccionIA_Load);

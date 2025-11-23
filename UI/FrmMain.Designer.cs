@@ -36,7 +36,7 @@
             this.btnVerGrafico.Location = new System.Drawing.Point(250, 100);
             this.btnVerGrafico.Name = "btnVerGrafico";
             this.btnVerGrafico.Size = new System.Drawing.Size(280, 40);
-            this.btnVerGrafico.TabIndex = 1;
+            this.btnVerGrafico.TabIndex = 0;
             this.btnVerGrafico.Text = "Ver Gráfico de Consumo";
             this.btnVerGrafico.UseVisualStyleBackColor = true;
             this.btnVerGrafico.Click += new System.EventHandler(this.btnVerGrafico_Click);
@@ -46,7 +46,7 @@
             this.btnRegistrarFactura.Location = new System.Drawing.Point(250, 160);
             this.btnRegistrarFactura.Name = "btnRegistrarFactura";
             this.btnRegistrarFactura.Size = new System.Drawing.Size(280, 40);
-            this.btnRegistrarFactura.TabIndex = 2;
+            this.btnRegistrarFactura.TabIndex = 1;
             this.btnRegistrarFactura.Text = "Registrar Nueva Factura";
             this.btnRegistrarFactura.UseVisualStyleBackColor = true;
             this.btnRegistrarFactura.Click += new System.EventHandler(this.btnRegistrarFactura_Click);
@@ -56,7 +56,7 @@
             this.btnPrediccionIA.Location = new System.Drawing.Point(250, 220);
             this.btnPrediccionIA.Name = "btnPrediccionIA";
             this.btnPrediccionIA.Size = new System.Drawing.Size(280, 40);
-            this.btnPrediccionIA.TabIndex = 3;
+            this.btnPrediccionIA.TabIndex = 2;
             this.btnPrediccionIA.Text = "Predicción con IA";
             this.btnPrediccionIA.UseVisualStyleBackColor = true;
             this.btnPrediccionIA.Click += new System.EventHandler(this.btnPrediccionIA_Click);
@@ -66,7 +66,7 @@
             this.btnExportarPdf.Location = new System.Drawing.Point(250, 280);
             this.btnExportarPdf.Name = "btnExportarPdf";
             this.btnExportarPdf.Size = new System.Drawing.Size(280, 40);
-            this.btnExportarPdf.TabIndex = 4;
+            this.btnExportarPdf.TabIndex = 3;
             this.btnExportarPdf.Text = "Exportar Última Factura a PDF";
             this.btnExportarPdf.UseVisualStyleBackColor = true;
             this.btnExportarPdf.Click += new System.EventHandler(this.btnExportarPdf_Click);
