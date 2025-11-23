@@ -65,5 +65,10 @@ namespace Proyect_Sencom_Form.UI
                 lblMensaje.Text = ex.Message;
             }
         }
+
+        private void FrmFactura_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

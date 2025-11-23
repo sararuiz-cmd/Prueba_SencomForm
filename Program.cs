@@ -7,7 +7,7 @@ namespace Proyect_Sencom_Form
 {
     static class Program
     {
-        // Controlador compartido
+        // Controlador compartido para toda la app
         public static FacturaController ControllerGlobal = new FacturaController();
 
         [STAThread]
@@ -16,7 +16,6 @@ namespace Proyect_Sencom_Form
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Se lo pasamos al Login
             Application.Run(new FrmLogin(ControllerGlobal));
         }
     }

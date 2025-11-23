@@ -130,7 +130,8 @@ namespace Proyect_Sencom_Form.UI
             this.Controls.Add(this.txtNombreCliente);
             this.Name = "FrmPrediccionIA";
             this.Text = "Módulo de Predicción con IA";
-            this.Load += new System.EventHandler(this.FrmPrediccionIA_Load);
+
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
