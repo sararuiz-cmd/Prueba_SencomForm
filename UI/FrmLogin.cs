@@ -12,6 +12,27 @@ namespace Proyect_Sencom_Form.UI
         {
             InitializeComponent();
             _controller = controller;
+
+            // Asegurar suscripción a eventos en caso de que no esté configurada en el diseñador
+            if (btnIniciarSesion != null)
+            {
+                btnIniciarSesion.Click -= btnIniciarSesion_Click;
+                btnIniciarSesion.Click += btnIniciarSesion_Click;
+            }
+
+            if (btnRegistrar != null)
+            {
+                btnRegistrar.Click -= btnRegistrar_Click;
+                btnRegistrar.Click += btnRegistrar_Click;
+            }
+
+            // Permitir que Enter dispare el login
+            if (btnIniciarSesion != null)
+            {
+                AcceptButton = btnIniciarSesion;
+            }
+
+            lblMensaje.Text = string.Empty;
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)

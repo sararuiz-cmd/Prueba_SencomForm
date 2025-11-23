@@ -37,7 +37,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(40, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 16);
+            this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Nombre del Cliente:";
             // 
@@ -45,15 +45,15 @@
             // 
             this.txtNombreCliente.Location = new System.Drawing.Point(180, 37);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(220, 22);
-            this.txtNombreCliente.TabIndex = 9;
+            this.txtNombreCliente.Size = new System.Drawing.Size(220, 20);
+            this.txtNombreCliente.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(40, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Dirección:";
             // 
@@ -61,15 +61,15 @@
             // 
             this.txtDireccion.Location = new System.Drawing.Point(180, 77);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(220, 22);
-            this.txtDireccion.TabIndex = 7;
+            this.txtDireccion.Size = new System.Drawing.Size(220, 20);
+            this.txtDireccion.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(40, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 16);
+            this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Capacidad (kW):";
             // 
@@ -77,15 +77,15 @@
             // 
             this.txtCapacidadKw.Location = new System.Drawing.Point(180, 117);
             this.txtCapacidadKw.Name = "txtCapacidadKw";
-            this.txtCapacidadKw.Size = new System.Drawing.Size(100, 22);
-            this.txtCapacidadKw.TabIndex = 5;
+            this.txtCapacidadKw.Size = new System.Drawing.Size(100, 20);
+            this.txtCapacidadKw.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(40, 160);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 16);
+            this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Meses:";
             // 
@@ -93,7 +93,7 @@
             // 
             this.txtMeses.Location = new System.Drawing.Point(180, 157);
             this.txtMeses.Name = "txtMeses";
-            this.txtMeses.Size = new System.Drawing.Size(100, 22);
+            this.txtMeses.Size = new System.Drawing.Size(100, 20);
             this.txtMeses.TabIndex = 3;
             // 
             // btnGenerar
@@ -101,7 +101,7 @@
             this.btnGenerar.Location = new System.Drawing.Point(40, 200);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(150, 35);
-            this.btnGenerar.TabIndex = 2;
+            this.btnGenerar.TabIndex = 4;
             this.btnGenerar.Text = "Generar Facturas";
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
@@ -113,7 +113,7 @@
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.RowHeadersWidth = 51;
             this.dgvFacturas.Size = new System.Drawing.Size(600, 250);
-            this.dgvFacturas.TabIndex = 1;
+            this.dgvFacturas.TabIndex = 5;
             // 
             // lblMensaje
             // 
@@ -121,7 +121,7 @@
             this.lblMensaje.ForeColor = System.Drawing.Color.Maroon;
             this.lblMensaje.Location = new System.Drawing.Point(40, 230);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(0, 16);
+            this.lblMensaje.Size = new System.Drawing.Size(0, 13);
             this.lblMensaje.TabIndex = 0;
             // 
             // FrmFactura

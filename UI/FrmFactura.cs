@@ -15,6 +15,11 @@ namespace Proyect_Sencom_Form.UI
             _controller = controller;
         }
 
+        private void FrmFactura_Load(object sender, EventArgs e)
+        {
+            // Inicialización necesaria al cargar el formulario
+        }
+
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             try
